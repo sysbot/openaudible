@@ -35,20 +35,51 @@
         <profile>
             <id>Mac</id>
             <activation>
-                <os><family>mac</family></os>
+                <os>
+                    <family>mac</family>
+                    <arch>x86_64</arch>
+                </os>
             </activation>
-            <properties>
-                <swt_library>org.eclipse.swt.cocoa.macosx.x86_64-4.6.jar</swt_library>
-            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.swt</groupId>
+                    <artifactId>swt</artifactId>
+                    <version>1.0</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/swt/org.eclipse.swt.cocoa.macosx.x86_64-4.6.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>MacArm64</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                    <arch>aarch64</arch>
+                </os>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.platform</groupId>
+                    <artifactId>org.eclipse.swt.cocoa.macosx.aarch64</artifactId>
+                    <version>3.116.100</version>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>Win64</id>
             <activation>
                 <os><family>windows</family></os>
             </activation>
-            <properties>
-                <swt_library>org.eclipse.swt.win32.win32.x86_64-4.6.jar</swt_library>
-            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.swt</groupId>
+                    <artifactId>swt</artifactId>
+                    <version>1.0</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/swt/org.eclipse.swt.win32.win32.x86_64-4.6.jar</systemPath>
+                </dependency>
+            </dependencies>
 
         </profile>
         <profile>
@@ -60,9 +91,15 @@
                 </os>
 
             </activation>
-            <properties>
-                <swt_library>org.eclipse.swt.gtk.linux.x86_64-4.6.jar</swt_library>
-            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.eclipse.swt</groupId>
+                    <artifactId>swt</artifactId>
+                    <version>1.0</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/swt/org.eclipse.swt.gtk.linux.x86_64-4.6.jar</systemPath>
+                </dependency>
+            </dependencies>
         </profile>
 
     </profiles>
@@ -169,16 +206,6 @@
         <!-- desktop dependencies -->
 
         <dependency>
-            <!-- SWT library is platform dependent. So we break a few eggs getting it to work with the right profile. -->
-
-            <groupId>org.eclipse.swt</groupId>
-            <artifactId>swt</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/swt/${swt_library}</systemPath>
-        </dependency>
-
-        <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160212</version>
@@ -227,7 +254,7 @@
         <dependency>
             <groupId>net.jthink</groupId>
             <artifactId>jaudiotagger</artifactId>
-            <version>2.2.3</version>
+            <version>2.2.5</version>
         </dependency>
 
         <dependency>
@@ -249,7 +276,12 @@
         <dependency>
           <groupId>com.sun.xml.bind</groupId>
           <artifactId>jaxb-impl</artifactId>
-          <version>2.3.0</version>
+          <version>2.3.8</version>
+        </dependency>
+        <dependency>
+          <groupId>javax.activation</groupId>
+          <artifactId>activation</artifactId>
+          <version>1.1.1</version>
         </dependency>
     </dependencies>
 </project>
